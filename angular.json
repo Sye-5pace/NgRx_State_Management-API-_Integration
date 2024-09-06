@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "RxJs_State_management-API_Integration": {
+    "Product-List-app": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/rx-js-state-management-api-integration",
+            "outputPath": "dist/product-list-app",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -57,10 +57,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "RxJs_State_management-API_Integration:build:production"
+              "buildTarget": "Product-List-app:build:production"
             },
             "development": {
-              "buildTarget": "RxJs_State_management-API_Integration:build:development"
+              "buildTarget": "Product-List-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -68,27 +68,10 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "RxJs_State_management-API_Integration:build"
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
-            "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": []
+            "buildTarget": "Product-List-app:build"
           }
         }
+
       }
     }
   }

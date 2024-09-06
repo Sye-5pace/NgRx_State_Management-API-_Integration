@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html{
+  margin: 0;
+  padding: 0;
+}
+
+.scrollable {
+  padding-inline: .25rem;
+  overflow-y: scroll;
+}
+
+.scrollable::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scrollable::-webkit-scrollbar-track {
+  background: transparent ;
+}
+
+.scrollable::-webkit-scrollbar-thumb {
+  background: #ad8a85c1;
+  border-radius: 10px;
+  background-clip: content-box;
+}
+
+.scrollable::-webkit-scrollbar-thumb:hover {
+  background: #AD8A85;
+}
+
