@@ -1,0 +1,52 @@
+
+ <!-- Task 3: Display Products and Cart
+  Template uses async pipe to subscribe to observables(product$).
+  This product$ observable is created by BehaviorSubject
+  and recieves datastream/observables from the http request -->
+
+<section  class="card-container grid grid-cols-3 gap-6 mobile:grid-cols-1 mobile:gap-y-8 ">
+  @if (product$ | async; as products) {
+    @for(product of products; track product.name; let i = $index;) {
+      <div class="flex flex-col h-[21.6875rem] gap-y-4 mobile:h-[19.9375rem] card"  >
+        <div class="flex flex-col items-center">
+          <div class="rounded-[.5rem] overflow-hidden w-full" [ngClass]="{'border-tiamaria border': addTrigger[i]}">
+            <img class="mobile:h-[13.25rem] mobile:w-full object-cover" [src]="getResponsiveImage(product.image)" alt="product-name">
+          </div>
+          <div (click)="cartAddTrigger(i)">
+            @if(!addTrigger[i]){
+              <button class="relative mt-[-1.75rem] rounded-[2rem] py-[.7125rem] px-[1.75rem] bg-[#fff] border flex items-center justify-center gap-[.5rem]"
+                  [ngClass]="triggerHoverState(i)"
+                  (mouseenter)="onMouseEnter(i)"
+                   (mouseleave)="onMouseLeave()"
+                  >
+                <img src="../../../assets/images/icon-add-to-cart.svg" alt="cart-icon">
+                <p class="text-[0.875rem] font-semibold">Add to Cart</p>
+              </button>
+            } @else {
+              <div class="relative w-full mt-[-1.75rem] rounded-[2rem] py-[.7125rem] px-[.75rem] bg-tiamaria flex items-center justify-between gap-8">
+                <button (click)="removeCart(i,product)">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-[#fff]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                </button>
+                <p class="text-[0.875rem] font-semibold text-[#fff]">{{ cartCounts[i] }}</p>
+                <button (click)="addCart(i,product)">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 stroke-[#fff]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                  </svg>
+                </button>
+              </div>
+            }
+          </div>
+        </div>
+        <div class="flex flex-col gap-y-1">
+          <p class="text-[.875rem] text-beaver">{{ product.category }}</p>
+          <h4 class="text-graphite font-semibold text-[1rem]">{{ product.name }}</h4>
+          <h3 class="text-tiamaria font-semibold text-[1rem]">{{ product.price | currency }}</h3>
+        </div>
+      </div>
+    }
+  } @else {
+    <p>Loading products...</p>
+  }
+</section>
