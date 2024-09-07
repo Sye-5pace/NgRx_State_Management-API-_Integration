@@ -1,7 +1,6 @@
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { ProductPageComponent } from './view/product-page/product-page.component';
-import { ConfirmModalComponent } from "./components/confirm-modal/confirm-modal.component";
 
 describe('AppComponent', () => {
   let component: AppComponent;
