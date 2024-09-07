@@ -50,7 +50,8 @@ export class ProductCartComponent implements OnInit , AfterViewInit {
       duration: 500,
       easing: 'easeInOutSine',
       loop: true,
-      delay: anime.stagger(200)
+      delay: anime.stagger(200),
+      alternate: true
     });
     anime({
       targets: '.svg-demo path',
@@ -59,12 +60,19 @@ export class ProductCartComponent implements OnInit , AfterViewInit {
         { value: 0, duration: 500, easing: 'easeInOutSine' }
       ],
       loop: true,
-      delay: anime.stagger(100)
+      delay: anime.stagger(100),
+      alternate: true
     });
   }
 
   // Task 5: Impement remove from cartitems
   removeFromCart(itemName:string){
     this.cartService.removeFromCart(itemName)
+  }
+
+  // Task 5: Impement remove from cartitems
+  //clear cart method from cart service:
+  clearCart(){
+    this.cartService.clearCart();
   }
 }
